@@ -1,0 +1,61 @@
+Angela Li, Jason Kim, Kathleen Wong
+Period 5
+Connect-4
+
+What is our project?
+	Our project will be a recreation of the game Connect-4. To make things interesting, we will take advantage of networking to allow 2 people to compete against one another using their own computers. Once there is a connection established between the 2 competitors, the 2 will play a normal game of Connect-4. As per traditional rules, any combination of four in a row, column, or diagonal constitutes a win.
+
+How will it be used?
+	This game will be played in the shell. Because there is a host that will centralize the game, the 2 players will execute the program differently. This will be done with command line arguments such as:
+
+    ./connect4 host
+    ./connect4 player
+
+	Once the 2 players are in a game, they will be presented with a board and one of them will go first. They will simply be asked to choose a column to put their piece into. Of course, this is on a turn-by-turn basis so they will not be prompted when it’s not their turn. The user-interface will look something like this:
+
+    1 2 3 4 5 6 7
+    - - - - - - -
+    - - - - - - -
+    - - - - - - -
+    - - - - - - -
+    - - X O - - -
+    - - O X X O -
+    Which column will you drop your piece in? (1-7):
+
+Topics
+  Working with files: Networking requires file descriptors but there are special functions for sockets so, this isn’t exactly the same as a typical file.
+  Pipes: Transfers and shares information.
+  Semaphores: Only one player can make a move at a time.
+  Networking: Allows the connection of 2 players/machines.
+
+Breakdown
+  Angela: User-Input and Game Design
+  Jason: Networking
+  Kathleen: User-Interface and Game Design
+
+Data Structures
+  char ** board
+    X: Player 1
+    O: Player 2
+    -: Empty
+  Socket
+    Allows the transferring of information.
+    Will most likely be containing boards to pass.
+
+Algorithms
+  Check for a win
+    Vertically, horizontally, or diagonally using arrays
+  Network communication
+    Similar to handshakes: sockets
+
+Timeline
+  12/28
+    Proposal
+  01/04
+    Create or implement basic data structures
+    Establish working connection between players
+  01/11
+    Implement algorithm to check wins
+    Implement sockets
+  01/18
+    Debug
