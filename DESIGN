@@ -4,12 +4,14 @@ Connect-4
 
 What is our project?
 	Our project will be a recreation of the game Connect-4.
-	To make things interesting, we will take advantage of networking to allow 2 people to compete against one another using their own computers.
+	To make things interesting, we will take advantage of networking to allow 2 people
+	to compete against one another using their own computers.
 	Once there is a connection established between the 2 competitors, the 2 will play a normal game of Connect-4.
 	As per traditional rules, any combination of four in a row, column, or diagonal constitutes a win.
 
 How will it be used?
-	This game will be played in the shell. Because there is a host that will centralize the game, the 2 players will execute the program differently.
+	This game will be played in the shell. Because there is a host that will centralize the game,
+	the 2 players will execute the program differently.
 	This will be done with command line arguments such as:
 
     ./connect4 host
@@ -30,8 +32,7 @@ How will it be used?
     Which column will you drop your piece in? (1-7):
 
 Topics
-  Working with files: Networking requires file descriptors but there are special functions for sockets so,
-											this isn’t exactly the same as a typical file.
+  Working with files: There are special functions for sockets so, this isn’t exactly the same as a typical file.
   Pipes: Transfers and shares information.
   Semaphores: Only one player can make a move at a time.
   Networking: Allows the connection of 2 players/machines.
