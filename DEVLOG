@@ -20,3 +20,6 @@ Kathleen Wong
   angela: added minor edits to socket code
           updated DEVLOG
   jason: started the connect-4 algorithm in c
+
+2019-01-14
+	angela: added two-way send/receive between server/client

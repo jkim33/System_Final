@@ -22,23 +22,18 @@ int main() {
 
 void subserver(int client_socket) {
   char buffer[BUFFER_SIZE];
+	char buffer1[BUFFER_SIZE];
+	char board[100] = "1 2 3 4 5 6 7\n_ _ _ _ _ _ _\n_ _ _ _ _ _ _\n_ _ _ _ _ _ _\n_ _ _ _ _ _ _\n_ _ _ _ _ _ _\n_ _ _ _ _ _ _\n";
 
-  while (read(client_socket, buffer, sizeof(buffer))) {
+  while (read(client_socket, buffer1, sizeof(buffer1))) {
+		printf("%s\n", board);
 
-    printf("[subserver %d] received: [%s]\n", getpid(), buffer);
-    process(buffer);
+		printf("enter slot(1-7): ");
+    fgets(buffer, sizeof(buffer), stdin);
+    printf("[player 2] received: %s\n\n", buffer1);
     write(client_socket, buffer, sizeof(buffer));
   }//end read loop
   close(client_socket);
   exit(0);
 }
 
-void process(char * s) {
-  while (*s) {
-    if (*s >= 'a' && *s <= 'z')
-      *s = ((*s - 'a') + 13) % 26 + 'a';
-    else  if (*s >= 'A' && *s <= 'Z')
-      *s = ((*s - 'a') + 13) % 26 + 'a';
-    s++;
-  }
-}
