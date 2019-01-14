@@ -10,8 +10,9 @@ int main(int argc, char **argv) {
   else
     server_socket = client_setup( TEST_IP );
 
+  printf("WELCOME TO CONNECT 4\n\n");
   while (1) {
-    printf("enter data: ");
+    printf("enter slot(1-7): ");
     fgets(buffer, sizeof(buffer), stdin);
     *strchr(buffer, '\n') = 0;
     write(server_socket, buffer, sizeof(buffer));
