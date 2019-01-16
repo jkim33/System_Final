@@ -22,4 +22,7 @@ Kathleen Wong
   jason: started the connect-4 algorithm in c
 
 2019-01-14
-	angela: added two-way send/receive between server/client
+  angela: added two-way send/receive between server/client
+  
+2019-01-16
+  jason: finished the connect-4 game
