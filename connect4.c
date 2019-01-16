@@ -128,7 +128,7 @@ int main() {
       exit(0);
     }
     char input[256];
-    printf("Which columns? (1-7): ");
+    printf("Which column? (1-7): ");
     fgets(input, 256, stdin);
     input[strlen(input)-1] = 0;
     i = atoi(input) - 1;
