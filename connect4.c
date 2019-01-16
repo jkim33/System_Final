@@ -107,7 +107,7 @@ void printboard(char** board) {
     printf("\n");
   }
 }
-
+/*
 int main() {
   char* board[7];
   for (int i = 0; i<7; i++) {
@@ -142,3 +142,4 @@ int main() {
     printboard(board);
   }
 }
+*/
