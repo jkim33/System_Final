@@ -35,6 +35,18 @@ int checkWin2(char** board) {
       	    board[c][r] != '-')
       	  return 1;
       }
+			if (c<=3) {
+				if (board[c][r] == board[c+1][r] &&
+      	    board[c][r] == board[c+2][r] &&
+      	    board[c][r] == board[c+3][r] &&
+      	    board[c][r] != '-')
+      	  return 1;
+			if (r<=2) {
+				if (board[c][r] == board[c][r+1] &&
+      	    board[c][r] == board[c][r+2] &&
+      	    board[c][r] == board[c][r+3] &&
+      	    board[c][r] != '-')
+      	  return 1;
     }
   }
   return 0;
