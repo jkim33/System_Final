@@ -18,7 +18,7 @@ int insert(char** board, int col, char piece) {
   return 0;
 }
 
-int checkWin2(char** board) {
+int checkWin(char** board) {
   for (int r = 0; r<6; r++) {
     for (int c = 0; c<7; c++) {
       if (r>=3 && c<=3) {
@@ -35,23 +35,26 @@ int checkWin2(char** board) {
       	    board[c][r] != '-')
       	  return 1;
       }
-			if (c<=3) {
-				if (board[c][r] == board[c+1][r] &&
+      if (c<=3) {
+	if (board[c][r] == board[c+1][r] &&
       	    board[c][r] == board[c+2][r] &&
       	    board[c][r] == board[c+3][r] &&
       	    board[c][r] != '-')
       	  return 1;
-			if (r<=2) {
-				if (board[c][r] == board[c][r+1] &&
+      }
+      if (r<=2) {
+	if (board[c][r] == board[c][r+1] &&
       	    board[c][r] == board[c][r+2] &&
       	    board[c][r] == board[c][r+3] &&
       	    board[c][r] != '-')
       	  return 1;
+      }
     }
   }
   return 0;
 }
 
+/*
 int checkWin(char** board, int col, int row) {
   int i = 0;
   for (i=col-3; i>=0 && i<=3; i++) {
@@ -98,7 +101,7 @@ void printboard(char** board) {
   }
 }
 
-/*
+
 int main() {
   char* board[7];
   for (int i = 0; i<7; i++) {
