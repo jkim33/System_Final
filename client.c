@@ -1,10 +1,11 @@
 #include "networking.h"
+#include "connect4.h"
 
 int main(int argc, char **argv) {
 
   int server_socket;
-  char buffer[BUFFER_SIZE];
-  int win = 0;
+  int i,e;
+  char input[BUFFER_SIZE];
   char* board[7];
   for (int i = 0; i<7; i++) {
     board[i] = malloc(6);
@@ -22,25 +23,28 @@ int main(int argc, char **argv) {
     server_socket = client_setup( TEST_IP );
 
   printf("WELCOME TO CONNECT 4\n\n");
+  printboard(board);
   while (1) {
-    printboard(board);
-    int i;
-    if(win == 1) {
-      printf("WINNER\n");
-      exit(0);
-    }
-    char input[256];
-    printf("enter slot(1-7): ");
+    printf("\nenter slot(1-7): ");
     fgets(input, 256, stdin);
     input[strlen(input)-1] = 0;
-
-    i = atoi(input) - 1;
-    insert(board,i,'o');
     write(server_socket, input, sizeof(input));
+    i = atoi(input) - 1;
+    e = insert(board,i,'o');
+    printboard(board);
+    if(e){
+      printf("PLAYER WINS! CONGRATS~\n");
+      exit(0);
+    }
+    printf("waiting for host... \n\n");
+
     read(server_socket, input, sizeof(input));
     i = atoi(input) - 1;
-    insert(board,i,'x');
+    e = insert(board,i,'x');
     printboard(board);
-    printf("[player 1] received: %s\n", input);
+    if(e){
+      printf("HOST WINS! better luck next time~\n");
+      exit(0);
+    }
   }
 }

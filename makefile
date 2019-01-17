@@ -18,7 +18,7 @@ select_client.o: select_client.c networking.h connect4.h
 	gcc -c select_client.c
 
 client.o: client.c networking.h connect4.h
-	gcc -c client.c 
+	gcc -c client.c
 
 select_server.o: select_server.c networking.h connect4.h
 	gcc -c select_server.c

@@ -13,9 +13,9 @@
 #define CONNECT4_H
 
 int legal(char** board, int col) ;
-void insert(char** board, int col, char piece);
-void checkWin2(char** board);
-void checkWin(char** board, int col, int row);
+int insert(char** board, int col, char piece);
+int checkWin2(char** board);
+int checkWin(char** board, int col, int row);
 void printboard(char** board) ;
 
 #endif

@@ -23,8 +23,7 @@ int main() {
 
 void subserver(int client_socket) {
   char input[BUFFER_SIZE];
-	int win = 0;
-  int i;
+  int i,e;
   char* board[7];
   for (int i = 0; i<7; i++) {
     board[i] = malloc(6);
@@ -36,26 +35,30 @@ void subserver(int client_socket) {
     }
   }
 
+  printboard(board);
+  printf("waiting for player... \n\n");
   while (read(client_socket, input, sizeof(input))) {
     i = atoi(input) - 1;
-    insert(board,i,'o');
-		printboard(board);
+    e = insert(board,i,'o');
+    printboard(board);
+    if(e){
+      printf("PLAYER WINS! better luck next time~\n");
+      exit(0);
+    }
 
-	  if(win == 1) {
-	    printf("WINNER\n");
-	    exit(0);
-	  }
-
-	  printf("enter slot(1-7): ");
+	  printf("\nenter slot(1-7): ");
 	  fgets(input, 256, stdin);
 	  input[strlen(input)-1] = 0;
 
     write(client_socket, input, sizeof(input));
 	  i = atoi(input) - 1;
-	  insert(board,i,'x');
-	  printboard(board);
-
-    printf("[player 2] received: %s\n\n", input);
+    e = insert(board,i,'x');
+    printboard(board);
+    if(e){
+      printf("HOST WINS! congrats~\n");
+      exit(0);
+    }
+    printf("waiting for player... \n\n");
   }//end read loop
   close(client_socket);
   exit(0);

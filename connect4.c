@@ -1,98 +1,76 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <string.h>
-#include <errno.h>
-
-int win = 0;
+#include "connect4.h"
 
 int legal(char** board, int col) {
-  if (board[col][0] == '-') {
+  if (board[col][0] == '-')
     return 1;
-  }
   return 0;
 }
 
-void insert(char** board, int col, char piece) {
+int insert(char** board, int col, char piece) {
   if (legal(board, col)) {
     int r = 0;
     while(board[col][r+1] == '-' && r < 5) {
       r++;
     }
     board[col][r] = piece;
-    checkWin(board, col, r);
+    return checkWin(board, col, r);
   }
+  return 0;
 }
 
-void checkWin2(char** board) {
+int checkWin2(char** board) {
   for (int r = 0; r<6; r++) {
     for (int c = 0; c<7; c++) {
       if (r>=3 && c<=3) {
-	if (board[c][r] == board[c+1][r-1] &&
-	    board[c][r] == board[c+2][r-2] &&
-	    board[c][r] == board[c+3][r-3] &&
-	    board[c][r] != '-') {
-	  win = 1;
-	  return;
-	}
+      	if (board[c][r] == board[c+1][r-1] &&
+      	    board[c][r] == board[c+2][r-2] &&
+      	    board[c][r] == board[c+3][r-3] &&
+      	    board[c][r] != '-')
+      	  return 1;
       }
       if (r>=3 && c>=3) {
-	if (board[c][r] == board[c-1][r-1] &&
-	    board[c][r] == board[c-2][r-2] &&
-	    board[c][r] == board[c-3][r-3] &&
-	    board[c][r] != '-') {
-	  win = 1;
-	  return;
-	}
+      	if (board[c][r] == board[c-1][r-1] &&
+      	    board[c][r] == board[c-2][r-2] &&
+      	    board[c][r] == board[c-3][r-3] &&
+      	    board[c][r] != '-')
+      	  return 1;
       }
     }
   }
+  return 0;
 }
 
-void checkWin(char** board, int col, int row) {
+int checkWin(char** board, int col, int row) {
   int i = 0;
   for (i=col-3; i>=0 && i<=3; i++) {
     if (board[i][row] == board[i+1][row] &&
-	board[i][row] == board[i+2][row] &&
-	board[i][row] == board[i+3][row] &&
-	board[i][row] != '-') {
-      win = 1;
-      return;
-    }
+      	board[i][row] == board[i+2][row] &&
+      	board[i][row] == board[i+3][row] &&
+      	board[i][row] != '-')
+      return 1;
   }
   for (i=col+3; i>=3 && i<=6; i++) {
     if (board[i][row] == board[i-1][row] &&
-	board[i][row] == board[i-2][row] &&
-	board[i][row] == board[i-3][row] &&
-	board[i][row] != '-') {
-      win = 1;
-      return;
-    }
+	      board[i][row] == board[i-2][row] &&
+	      board[i][row] == board[i-3][row] &&
+	      board[i][row] != '-')
+      return 1;
   }
   for (i=row+3; i>=3 && i<=5; i++) {
     if (board[col][i] == board[col][i-1] &&
-	board[col][i] == board[col][i-2] &&
-	board[col][i] == board[col][i-3] &&
-	board[col][i] != '-') {
-      win = 1;
-      return;
-    }
+	      board[col][i] == board[col][i-2] &&
+	      board[col][i] == board[col][i-3] &&
+	      board[col][i] != '-')
+      return 1;
   }
   for (i=row-3; i>=0 && i<=2; i++) {
     if (board[col][i] == board[col][i+1] &&
-	board[col][i] == board[col][i+2] &&
-	board[col][i] == board[col][i+3] &&
-	board[col][i] != '-') {
-      win = 1;
-      return;
-    }
+	      board[col][i] == board[col][i+2] &&
+	      board[col][i] == board[col][i+3] &&
+        board[col][i] != '-')
+      return 1;
   }
-  checkWin2(board);
+  return checkWin2(board);
 }
 
 void printboard(char** board) {
@@ -107,6 +85,7 @@ void printboard(char** board) {
     printf("\n");
   }
 }
+
 /*
 int main() {
   char* board[7];

@@ -13,8 +13,6 @@ int main(int argc, char **argv) {
     server_socket = client_setup( TEST_IP );
 
   while (1) {
-
-    printf("enter slot(1-7): ");
     //the above printf does not have \n
     //flush the buffer to immediately print
     fflush(stdout);

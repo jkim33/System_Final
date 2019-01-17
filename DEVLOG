@@ -23,6 +23,7 @@ Kathleen Wong
 
 2019-01-14
   angela: added two-way send/receive between server/client
-  
+
 2019-01-16
   jason: finished the connect-4 game
+  angela: finished connect-4 game with sockets!
