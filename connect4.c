@@ -13,7 +13,7 @@ int insert(char** board, int col, char piece) {
       r++;
     }
     board[col][r] = piece;
-    return checkWin(board, col, r);
+    return checkWin(board);
   }
   return 0;
 }
@@ -87,7 +87,7 @@ int checkWin(char** board, int col, int row) {
   }
   return checkWin2(board);
 }
-
+*/
 void printboard(char** board) {
   for (int i = 1; i <=7; i++) {
     printf("%d ", i);
@@ -101,7 +101,7 @@ void printboard(char** board) {
   }
 }
 
-
+/*
 int main() {
   char* board[7];
   for (int i = 0; i<7; i++) {
