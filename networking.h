@@ -8,6 +8,7 @@
 #include <netdb.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 #include "connect4.h"
 
 #ifndef NETWORKING_H
