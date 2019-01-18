@@ -5,7 +5,8 @@ void process(char *s);
 void subserver(int from_client);
 
 int main() {
-
+  signal(SIGINT,sighandler);
+  signal(SIGUSR1,sighandler);
   int listen_socket;
   int f;
   listen_socket = server_setup();
@@ -23,13 +24,17 @@ int main() {
 
 static void sighandler(int signo){
 if(signo == SIGINT){
-  printf("GOODBYE, THANKS FOR PLAYING!\n");
+  printf("\nGOODBYE, THANKS FOR PLAYING!\n");
+  exit(0);
+}
+if(signo == SIGUSR1){
+  printf("\nGOODBYE, THANKS FOR PLAYING!\n");
   exit(0);
 }
 }
 
 void subserver(int client_socket) {
-  signal(SIGINT,sighandler);
+
 
   char input[BUFFER_SIZE];
   int i,e;
@@ -47,6 +52,7 @@ void subserver(int client_socket) {
   printboard(board);
   printf("waiting for player... \n\n");
   while (read(client_socket, input, sizeof(input))) {
+
     i = atoi(input) - 1;
     e = insert(board,i,'o');
     printboard(board);
