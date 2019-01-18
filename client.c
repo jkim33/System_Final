@@ -31,6 +31,12 @@ int main(int argc, char **argv) {
     write(server_socket, input, sizeof(input));
     i = atoi(input) - 1;
     e = insert(board,i,'o');
+    if(e == 2){
+      printf("IT'S A DRAW!\n");
+      //printf("enter control + c to exit\n");
+      //printf("If you want to play again , wait for the player to reconnnect\n\n");
+      exit(0);
+    }
     printboard(board);
     if(e){
       printf("PLAYER WINS! CONGRATS~\n");
@@ -42,6 +48,12 @@ int main(int argc, char **argv) {
     i = atoi(input) - 1;
     e = insert(board,i,'x');
     printboard(board);
+    if(e == 2){
+      printf("IT'S A DRAW!\n");
+      //printf("enter control + c to exit\n");
+      //printf("If you want to play again , wait for the player to reconnnect\n\n");
+      exit(0);
+    }
     if(e){
       printf("HOST WINS! better luck next time~\n");
       exit(0);
