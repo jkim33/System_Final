@@ -24,5 +24,5 @@ $ ./player [HOST IP ADDRESS]
 1. Enter a number from 1 - 7 to place your coin into a column
 2. Wait for opposing player to move
 3. Have four of your coins connected horizontally, vertically, or diagonally to WIN
-4. Loser can press control + c to exit the game
+4. Host should press control + c to exit the game
 5. Play again !
