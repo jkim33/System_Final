@@ -4,6 +4,17 @@
 void process(char *s);
 void subserver(int from_client);
 
+static void sighandler(int signo){
+if(signo == SIGINT){
+  printf("\nGOODBYE, THANKS FOR PLAYING!\n");
+  exit(0);
+}
+ else if(signo == SIGUSR1){
+  printf("\nGOODBYE, THANKS FOR PLAYING!\n");
+  exit(0);
+}
+}
+
 int main() {
   signal(SIGINT,sighandler);
   signal(SIGUSR1,sighandler);
@@ -22,16 +33,6 @@ int main() {
   }
 }
 
-static void sighandler(int signo){
-if(signo == SIGINT){
-  printf("\nGOODBYE, THANKS FOR PLAYING!\n");
-  exit(0);
-}
-if(signo == SIGUSR1){
-  printf("\nGOODBYE, THANKS FOR PLAYING!\n");
-  exit(0);
-}
-}
 
 void subserver(int client_socket) {
 
@@ -59,11 +60,13 @@ void subserver(int client_socket) {
     if(e == 2){
       printf("IT'S A DRAW!\n");
       printf("Enter Control + c to exit\n");
+      printf("If you want to play again , wait for the player to reconnnect\n\n");
       exit(0);
     }
     if(e){
       printf("PLAYER WINS! better luck next time~\n");
       printf("Enter Control + c to exit\n");
+      printf("If you want to play again , wait for the player to reconnnect\n\n");
       exit(0);
     }
 
@@ -78,11 +81,13 @@ void subserver(int client_socket) {
     if(e == 2){
       printf("IT'S A DRAW!\n");
       printf("Enter Control + c to exit\n");
+      printf("If you want to play again , wait for the player to reconnnect\n\n");
         exit(0);
     }
     if(e){
       printf("HOST WINS! congrats~\n");
       printf("Enter Control + c to exit\n");
+      printf("If you want to play again , wait for the player to reconnnect\n\n");
       exit(0);
     }
     printf("waiting for player... \n\n");
