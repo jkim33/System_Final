@@ -52,10 +52,12 @@ void subserver(int client_socket) {
     printboard(board);
     if(e == 2){
       printf("IT'S A DRAW!\n");
+      printf("Enter Control + c to exit\n");
       exit(0);
     }
     if(e){
       printf("PLAYER WINS! better luck next time~\n");
+      printf("Enter Control + c to exit\n");
       exit(0);
     }
 
@@ -69,10 +71,12 @@ void subserver(int client_socket) {
     printboard(board);
     if(e == 2){
       printf("IT'S A DRAW!\n");
-      exit(0);
+      printf("Enter Control + c to exit\n");
+        exit(0);
     }
     if(e){
       printf("HOST WINS! congrats~\n");
+      printf("Enter Control + c to exit\n");
       exit(0);
     }
     printf("waiting for player... \n\n");

@@ -1,20 +1,22 @@
 # Systems_Final
 System Level Programming - Final Project
+
 Jason Kim, Angela Li, Kathleen Wong (period 5)
 
 ## How to Start
 
 Instructions for HOST
+
 Type in terminal
 ```
 $ hostname -I // give your IP address to PLAYER
 $ make
-$ ./server
+$ ./host
 ```
 Instructions for PLAYER
 ```
 $ make
-$ ./client [HOST IP ADDRESS]
+$ ./player [HOST IP ADDRESS]
 ```
 
 ### How to PLAY

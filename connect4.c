@@ -7,11 +7,13 @@ int legal(char** board, int col) {
 }
 
 int draw(char ** board){
-  for(int i = 0; i< 7; i++){
-    if (!(board[i][0] == '-')){
-      return 0;}
-    }
-  return 1;
+  if ((!(board[0][0] == '-')) && (!(board[0][1] == '-')) &&
+  (!(board[0][2] == '-')) && (!(board[0][3] == '-')) &&
+  (!(board[0][4] == '-')) && (!(board[0][5] == '-')) &&
+  (!(board[0][5] == '-'))) {
+    return 1;
+  }
+  return 0;
 }
 
 int insert(char** board, int col, char piece) {
