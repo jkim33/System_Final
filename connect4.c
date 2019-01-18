@@ -10,17 +10,14 @@ int draw(char ** board){
   for (int r = 0; r<6; r++) {
     for (int c = 0; c<7; c++) {
       if (board[c][r] == '-') {
-        return 0;
+        return 1;
       }
     }
   }
-  return 1;
+  return 0;
 }
 
 int insert(char** board, int col, char piece) {
-  if(draw(board)){
-    return 2;
-  }
   if (legal(board, col)) {
     int r = 0;
     while(board[col][r+1] == '-' && r < 5) {
@@ -28,6 +25,9 @@ int insert(char** board, int col, char piece) {
     }
     board[col][r] = piece;
     return checkWin(board);
+  }
+  if(draw(board)){
+    return 2;
   }
   return 0;
 }
