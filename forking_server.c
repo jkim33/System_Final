@@ -21,7 +21,16 @@ int main() {
   }
 }
 
+static void sighandler(int signo){
+if(signo == SIGINT){
+  printf("GOODBYE, THANKS FOR PLAYING!\n");
+  exit(0);
+}
+}
+
 void subserver(int client_socket) {
+  signal(SIGINT,sighandler);
+
   char input[BUFFER_SIZE];
   int i,e;
   char* board[7];
@@ -41,6 +50,10 @@ void subserver(int client_socket) {
     i = atoi(input) - 1;
     e = insert(board,i,'o');
     printboard(board);
+    if(e == 2){
+      printf("IT'S A DRAW!\n");
+      exit(0);
+    }
     if(e){
       printf("PLAYER WINS! better luck next time~\n");
       exit(0);
@@ -54,6 +67,10 @@ void subserver(int client_socket) {
 	  i = atoi(input) - 1;
     e = insert(board,i,'x');
     printboard(board);
+    if(e == 2){
+      printf("IT'S A DRAW!\n");
+      exit(0);
+    }
     if(e){
       printf("HOST WINS! congrats~\n");
       exit(0);

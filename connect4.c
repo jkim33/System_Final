@@ -6,7 +6,18 @@ int legal(char** board, int col) {
   return 0;
 }
 
+int draw(char ** board){
+  for(int i = 0; i< 7; i++){
+    if (!(board[i][0] == '-')){
+      return 0;}
+    }
+  return 1;
+}
+
 int insert(char** board, int col, char piece) {
+  if(draw(board)){
+    return 2;
+  }
   if (legal(board, col)) {
     int r = 0;
     while(board[col][r+1] == '-' && r < 5) {
