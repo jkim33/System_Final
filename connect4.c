@@ -1,6 +1,9 @@
 #include "connect4.h"
 
 int legal(char** board, int col) {
+  if (col < 0 || col > 6) {
+    return 0;
+  }
   if (board[col][0] == '-')
     return 1;
   return 0;
@@ -24,10 +27,12 @@ int insert(char** board, int col, char piece) {
       r++;
     }
     board[col][r] = piece;
-    return checkWin(board);
-  }
-  if(draw(board)){
-    return 2;
+    if(checkWin(board)) {
+      return 1;
+    }
+    if(!(draw(board))){
+      return 2;
+    }
   }
   return 0;
 }
