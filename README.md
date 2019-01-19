@@ -1,19 +1,25 @@
 # Systems_Final
-System Level Programming - Final Project
+# System Level Programming - Final Project
+# Connect-4
+### Jason Kim, Angela Li, Kathleen Wong (Period 5)
 
-Jason Kim, Angela Li, Kathleen Wong (period 5)
+## Description
+
+This is a recreation of Connect-4 in the terminal. In a 6 by 7 grid, the two players will take turns dropping a piece into a column. The objective is to get 4 of your pieces in a row; This could be horizontally, vertically, or diagonally. We have also taken advantage of sockets so two players can play using IP Addresses.
 
 ## How to START
 
-Instructions for HOST
+*Instructions for HOST
 
-Type in terminal
+Type in terminal:
 ```
 $ hostname -I // give your IP address to PLAYER
 $ make
 $ ./host
 ```
-Instructions for PLAYER
+*Instructions for PLAYER
+
+Type in terminal:
 ```
 $ make
 $ ./player [HOST IP ADDRESS]
